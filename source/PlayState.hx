@@ -1782,7 +1782,7 @@ class PlayState extends MusicBeatState
 			// FlxG.log.add(i);
 			var targetAlpha:Float = 1;
                         if (player < 1) targetAlpha = ClientPrefs.opponentArrowOpacity;
-                        else if (player == 1) targetAlpha = targetAlpha = ClientPrefs.arrowOpacity
+                        else if (player == 1) targetAlpha = targetAlpha = ClientPrefs.arrowOpacity;
 
 			var babyArrow:StrumNote = new StrumNote(ClientPrefs.middleScroll ? STRUM_X_MIDDLESCROLL : STRUM_X, strumLine.y, i, player);
 			if (!isStoryMode)
