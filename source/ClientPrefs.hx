@@ -26,7 +26,15 @@ class ClientPrefs {
 	public static var arrowHSV:Array<Array<Int>> = [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
 	public static var imagesPersist:Bool = false;
 	public static var ghostTapping:Bool = true;
-	public static var hideTime:Bool = false;
+	public static var timeBarType:String = 'Time Left';
+	public static var keTimeBar:Bool = false;
+	public static var arrowOpacity:Float = 1;
+	public static var laneOpacity:Float = 1;
+	public static var opponentLaneOpacity:Float = 1;
+	public static var opponentArrowOpacity:Float = 1;
+	public static var memoryCounter:Bool = true;
+	public static var judgements:Bool = true;
+	public static var noAntimash:Bool = false;
 
 	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState.hx)'s list
 	public static var keyBinds:Map<String, Dynamic> = new Map<String, Dynamic>();
@@ -68,6 +76,13 @@ class ClientPrefs {
 		FlxG.save.data.speed = speed;
 		FlxG.save.data.scroll = scroll;
 		FlxG.save.data.noteSize = noteSize;
+		FlxG.save.data.keTimeBar = keTimeBar;
+		FlxG.save.data.timeBarType = timeBarType;
+		FlxG.save.data.scoreType = scoreType;
+		FlxG.save.data.arrowOpacity = arrowOpacity;
+		FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
+		FlxG.save.data.laneOpacity = laneOpacity;
+		FlxG.save.data.opponentLaneOpacity = OpponentLaneOpacity;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
@@ -130,6 +145,39 @@ class ClientPrefs {
 		if(FlxG.save.data.camZooms != null) {
 			camZooms = FlxG.save.data.camZooms;
 		}
+		if(FlxG.save.data.noAntimash != null) {
+                        noAntimash = FlxG.save.data.noAntimash;
+                }
+		if(FlxG.save.data.healthBarAlpha != null) {
+                        healthBarAlpha = FlxG.save.data.healthBarAlpha;
+                }
+		if(FlxG.save.data.laneOpacity != null) {
+                        laneOpacity = FlxG.save.data.laneOpacity;
+                }
+		if(FlxG.save.data.arrowOpacity != null) {
+                        arrowOpacity = FlxG.save.data.arrowOpacity;
+                }
+		if(FlxG.save.data.memoryCounter != null) {
+                        memoryCounter = FlxG.save.data.memoryCounter;
+                }
+		if(FlxG.save.data.opponentArrowOpacity != null) {
+                        opponentArrowOpacity = FlxG.save.data.opponentArrowOpacity;
+                }
+		if(FlxG.save.data.opponentLaneOpacity != null) {
+                        opponentLaneOpacity = FlxG.save.data.opponentLaneOpacity;
+                }
+		if(FlxG.save.data.scoreType != null) {
+                        scoreType = FlxG.save.data.scoreType;
+                }
+		if(FlxG.save.data.timeBarType != null) {
+                        timebarType = FlxG.save.data.timeBarType;
+                }
+		if(FlxG.save.data.judgements != null) {
+                        judgements = FlxG.save.data.judgements;
+                }
+		if(FlxG.save.data.camZooms != null) {
+                        keTimeBar = FlxG.save.data.keTimeBar;
+                }
 		if(FlxG.save.data.hideHud != null) {
 			hideHud = FlxG.save.data.hideHud;
 		}
