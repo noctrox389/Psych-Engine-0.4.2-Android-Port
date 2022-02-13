@@ -336,11 +336,11 @@ class FreeplayState extends MusicBeatState
 		switch (curDifficulty) //if you want to put colors on your custom difficulties, create a new case
                 {
                         case 0:
-                                FlxTween.color(diffText, 0.3, diffText.color, FlxColor.LIME, {ease: FlxEase.quadInOut}
-                        case 1:
-                                FlxTween.color(diffText, 0.3, diffText.color, FlxColor.YELLOW, {ease: FlxEase.quadInOut}
+                                FlxTween.color(diffText, 0.3, diffText.color, FlxColor.LIME, {ease: FlxEase.quadInOut});
+                        case 1: 
+                                FlxTween.color(diffText, 0.3, diffText.color, FlxColor.YELLOW, {ease: FlxEase.quadInOut});
                         case 2:
-                                FlxTween.color(diffText, 0.3, diffText.color, FlxColor.RED, {ease: FlxEase.quadInOut}
+                                FlxTween.color(diffText, 0.3, diffText.color, FlxColor.RED, {ease: FlxEase.quadInOut});
                 }
 
 		#if !switch
