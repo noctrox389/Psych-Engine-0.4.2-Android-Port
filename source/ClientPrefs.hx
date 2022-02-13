@@ -84,7 +84,7 @@ class ClientPrefs {
 		FlxG.save.data.arrowOpacity = arrowOpacity;
 		FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
 		FlxG.save.data.laneOpacity = laneOpacity;
-		FlxG.save.data.opponentLaneOpacity = OpponentLaneOpacity;
+		FlxG.save.data.opponentLaneOpacity = opponentLaneOpacity;
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
