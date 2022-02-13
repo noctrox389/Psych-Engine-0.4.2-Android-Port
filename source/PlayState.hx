@@ -163,6 +163,11 @@ class PlayState extends MusicBeatState
 
 	private var timeBarBG:AttachedSprite;
 	public var timeBar:FlxBar;
+	
+	public var sicks:Int = 0;
+	public var goods:Int = 0;
+	public var bads:Int = 0;
+        public var shits:Int = 0;
 
 	private var generatedMusic:Bool = false;
 	public var endingSong:Bool = false;
