@@ -35,7 +35,7 @@ class ClientPrefs {
 	public static var opponentArrowOpacity:Float = 1;
 	public static var memoryCounter:Bool = true;
 	public static var judgements:Bool = true;
-	public static var scoreType:String 'Psych Engine';
+	public static var scoreType:String = 'Psych Engine';
 	public static var noAntimash:Bool = false;
 
 	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState.hx)'s list
