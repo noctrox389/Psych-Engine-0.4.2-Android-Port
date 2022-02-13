@@ -30,10 +30,12 @@ class ClientPrefs {
 	public static var keTimeBar:Bool = false;
 	public static var arrowOpacity:Float = 1;
 	public static var laneOpacity:Float = 1;
+	public static var healthBarAlpha:Float = 1;
 	public static var opponentLaneOpacity:Float = 1;
 	public static var opponentArrowOpacity:Float = 1;
 	public static var memoryCounter:Bool = true;
 	public static var judgements:Bool = true;
+	public static var scoreType:String 'Psych Engine';
 	public static var noAntimash:Bool = false;
 
 	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState.hx)'s list
@@ -89,7 +91,6 @@ class ClientPrefs {
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
-		FlxG.save.data.hideTime = hideTime;
 		FlxG.save.data.achievementsMap = Achievements.achievementsMap;
 		FlxG.save.data.henchmenDeath = Achievements.henchmenDeath;
 		FlxG.save.flush();
@@ -170,7 +171,7 @@ class ClientPrefs {
                         scoreType = FlxG.save.data.scoreType;
                 }
 		if(FlxG.save.data.timeBarType != null) {
-                        timebarType = FlxG.save.data.timeBarType;
+                        timeBarType = FlxG.save.data.timeBarType;
                 }
 		if(FlxG.save.data.judgements != null) {
                         judgements = FlxG.save.data.judgements;
@@ -202,9 +203,6 @@ class ClientPrefs {
 		}
 		if(FlxG.save.data.ghostTapping != null) {
 			ghostTapping = FlxG.save.data.ghostTapping;
-		}
-		if(FlxG.save.data.hideTime != null) {
-			hideTime = FlxG.save.data.hideTime;
 		}
 		
 		// flixel automatically saves your volume!

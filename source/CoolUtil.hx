@@ -6,6 +6,7 @@ import lime.utils.Assets as LimeAssets;
 import lime.utils.AssetLibrary;
 import lime.utils.AssetManifest;
 import openfl.utils.Assets;
+import flixel.util.FlxColor;
 
 using StringTools;
 
