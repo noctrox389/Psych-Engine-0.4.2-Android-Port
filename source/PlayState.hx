@@ -930,7 +930,7 @@ class PlayState extends MusicBeatState
 		healthBarBG.y = FlxG.height * 0.89;
 		healthBarBG.screenCenter(X);
 		healthBarBG.scrollFactor.set();
-		healthbarBG.alpha = ClientPrefs.healthBarAlpha
+		healthbarBG.alpha = ClientPrefs.healthBarAlpha;
 		healthBarBG.visible = !ClientPrefs.hideHud;
 		healthBarBG.xAdd = -4;
 		healthBarBG.yAdd = -4;
