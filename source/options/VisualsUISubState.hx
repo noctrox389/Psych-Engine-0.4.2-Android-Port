@@ -31,11 +31,17 @@ class VisualsUISubState extends BaseOptionsMenu
 {
 	public function new()
 	{
-		title = 'Custom Options';
+		title = 'Visuals and UI';
 		rpcTitle = 'Visuals & UI Settings Menu'; //for Discord Rich Presence
 
-		var option:Option = new Option('Score Type:',                                                                  
-			"What should be the score type?",
+		var option:Option = new Option('Note Splashes',
+			"If unchecked, hitting \"Sick!\" notes won't show particles.",
+			'noteSplashes',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Score Type:',                                                                  "What should the Time Bar display?",
                         'scoreType',
                         'string',
                         'Psych Engine',
@@ -49,6 +55,13 @@ class VisualsUISubState extends BaseOptionsMenu
                         true);
                 addOption(option);
 		option.onChange = onChangeMemoryCounter;
+
+		var option:Option = new Option('Hide HUD',
+			'If checked, hides most HUD elements.',
+			'hideHud',
+			'bool',
+			false);
+		addOption(option);
 
 		var option:Option = new Option('Health Counter',
                         'If unchecked, hides the health counter.',
@@ -65,17 +78,23 @@ class VisualsUISubState extends BaseOptionsMenu
 			['Time Left', 'Time Elapsed', 'Song Name', 'Disabled']);
 		addOption(option);
 
+		var option:Option = new Option('Flashing Lights',
+			"Uncheck this if you're sensitive to flashing lights!",
+			'flashing',
+			'bool',
+			true);
+		addOption(option);
+
+		var option:Option = new Option('Camera Zooms',
+			"If unchecked, the camera won't zoom in on a beat hit.",
+			'camZooms',
+			'bool',
+			true);
+		addOption(option);
 
 		var option:Option = new Option('Judgements',
                         'If unchecked, hides judgements.',
                         'judgements',
-                        'bool',
-                        true);
-                addOption(option);
-
-		var option:Option = new Option('No Antimash',
-                        'If checked, disables antimash.',
-                        'noAntimash',
                         'bool',
                         true);
                 addOption(option);
@@ -86,6 +105,7 @@ class VisualsUISubState extends BaseOptionsMenu
                         'bool',
                         false);
                 addOption(option);
+
 		var option:Option = new Option('Health Bar Opacity',
 			'How Opaque should the health bar and icons be.',
 			'healthBarAlpha',
