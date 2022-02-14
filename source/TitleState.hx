@@ -41,6 +41,7 @@ class TitleState extends MusicBeatState
 
 	var gradientBar:FlxSprite = new FlxSprite(0,0).makeGraphic(FlxG.width, 1, 0xFFC30085);
 
+	var Timer:Float = 0;
 	var blackScreen:FlxSprite;
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;

@@ -142,7 +142,7 @@ class FunkinLua {
 		set('framerate', ClientPrefs.framerate);
 		set('ghostTapping', ClientPrefs.ghostTapping);
 		set('hideHud', ClientPrefs.hideHud);
-		set('hideTime', ClientPrefs.hideTime);
+		set('timeBarTyoe', ClientPrefs.timeBarType);
 		set('cameraZoomOnBeat', ClientPrefs.camZooms);
 		set('flashingLights', ClientPrefs.flashing);
 		set('noteOffset', ClientPrefs.noteOffset);
