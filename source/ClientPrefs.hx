@@ -31,7 +31,8 @@ class ClientPrefs {
 	public static var arrowOpacity:Float = 1;
 	public static var laneOpacity:Float = 1;
 	public static var healthBarAlpha:Float = 1;
-	public static var opponentLaneOpacity:Float = 1;
+	public static var opponentLaneOpacity:Float = 1;;
+	public static var healthCounter:Bool = true;
 	public static var opponentArrowOpacity:Float = 1;
 	public static var memoryCounter:Bool = true;
 	public static var judgements:Bool = true;
@@ -81,6 +82,7 @@ class ClientPrefs {
 		FlxG.save.data.keTimeBar = keTimeBar;
 		FlxG.save.data.timeBarType = timeBarType;
 		FlxG.save.data.scoreType = scoreType;
+		FlxG.save.data.healthCounter = healthCounter;
 		FlxG.save.data.arrowOpacity = arrowOpacity;
 		FlxG.save.data.opponentArrowOpacity = opponentArrowOpacity;
 		FlxG.save.data.laneOpacity = laneOpacity;
@@ -175,6 +177,9 @@ class ClientPrefs {
                 }
 		if(FlxG.save.data.judgements != null) {
                         judgements = FlxG.save.data.judgements;
+                }
+		if(FlxG.save.data.healthCounter != null) {
+                        healthCounter = FlxG.save.data.healthCounter;
                 }
 		if(FlxG.save.data.camZooms != null) {
                         keTimeBar = FlxG.save.data.keTimeBar;
