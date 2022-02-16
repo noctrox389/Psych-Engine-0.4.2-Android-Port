@@ -180,7 +180,7 @@ class PlayState extends MusicBeatState
 	var runCutscene:Bool = false;
 	//lane underlay stuff
         public var laneunderlay:FlxSprite;
-        public var laneunderlayOpponent:FlxSprite; buggy
+        public var laneunderlayOpponent:FlxSprite; //buggy
 
 	var botplaySine:Float = 0;
 	var botplayTxt:FlxText;
