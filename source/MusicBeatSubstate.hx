@@ -6,6 +6,7 @@ import flixel.FlxSubState;
 import flixel.FlxBasic;
 import flixel.FlxSprite;
 #if mobileC
+import flixel.FlxCamera;
 import flixel.input.actions.FlxActionInput;
 import ui.FlxVirtualPad;
 #end
@@ -26,7 +27,7 @@ class MusicBeatSubstate extends FlxSubState
 
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
-		
+
 	#if mobileC
 	var _virtualpad:FlxVirtualPad;
 
@@ -51,7 +52,7 @@ class MusicBeatSubstate extends FlxSubState
 	}
 	#else
 	public function addVirtualPad(?DPad, ?Action){};
-	#end			
+	#end	
 
 	override function update(elapsed:Float)
 	{
