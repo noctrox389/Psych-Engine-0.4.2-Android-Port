@@ -1029,7 +1029,7 @@ class PlayState extends MusicBeatState
 		doof.cameras = [camHUD];
 		judgementCounter.cameras = [camHUD];
 		healthCounter.cameras = [camHUD];
-		versionTxt..cameras = [camHUD];
+		versionTxt.cameras = [camHUD];
 
 		#if mobileC
 			mcontrols = new Mobilecontrols();
