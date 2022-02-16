@@ -180,7 +180,7 @@ class PlayState extends MusicBeatState
 	var runCutscene:Bool = false;
 	//lane underlay stuff
         public var laneunderlay:FlxSprite;
-        public var laneunderlayOpponent:FlxSprite;
+        public var laneunderlayOpponent:FlxSprite; buggy
 
 	var botplaySine:Float = 0;
 	var botplayTxt:FlxText;
@@ -855,11 +855,12 @@ class PlayState extends MusicBeatState
                 laneunderlay.color = FlxColor.BLACK;
                 laneunderlay.scrollFactor.set();
 
-                if (!ClientPrefs.middleScroll)
+               /* if (!ClientPrefs.middleScroll)
                         {
                                 add(laneunderlayOpponent);
                         }
-                add(laneunderlay);
+                add(laneunderlay); //disabled for now.
+		*/
 
 		if(ClientPrefs.timeBarType == 'Song Name')
                 {
@@ -1022,12 +1023,13 @@ class PlayState extends MusicBeatState
 		laneunderlayOpponent.cameras = [camHUD];
                 laneunderlay.cameras = [camHUD];
 		botplayTxt.cameras = [camHUD];
-		timeBar.cameras = [camOther];
-		timeBarBG.cameras = [camOther];
-		timeTxt.cameras = [camOther];
+		timeBar.cameras = [camHUD];
+		timeBarBG.cameras = [camHUD];
+		timeTxt.cameras = [camHUD];
 		doof.cameras = [camHUD];
 		judgementCounter.cameras = [camHUD];
 		healthCounter.cameras = [camHUD];
+		versionTxt..cameras = [camHUD];
 
 		#if mobileC
 			mcontrols = new Mobilecontrols();

@@ -129,7 +129,7 @@ class VisualsUISubState extends BaseOptionsMenu
                 option.changeValue = 0.1;
 		option.decimals = 1;
                 addOption(option);
-
+/*
 		var option:Option = new Option('Lane Opacity',
                         'How Opaque should the lane underlay be.',
                         'laneOpacity',
@@ -153,7 +153,7 @@ class VisualsUISubState extends BaseOptionsMenu
                 option.changeValue = 0.1;
                 option.decimals = 1;
                 addOption(option);
-
+*/
                 var option:Option = new Option('Enemy Arrows Opacity',
                         'How Opaque should the opponent arrows be.',
                         'opponentArrowOpacity',
