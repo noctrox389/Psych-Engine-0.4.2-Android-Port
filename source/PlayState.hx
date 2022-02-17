@@ -2911,11 +2911,12 @@ class PlayState extends MusicBeatState
 	function moveCameraSection(?id:Int = 0):Void {
 		if(SONG.notes[id] == null) return;
 
-		if (!SONG.notes[id].mustHitSection)
+		if (!SONG.notes[id].mustHitSection && camFocus != 'dad')
 		{
 			moveCamera(true);
 			
 			if (SONG.notes[id].gfSection){
+				
 				callOnLuas('onMoveCamera', ['gf']);
 			}else{
 				callOnLuas('onMoveCamera', ['dad']);
@@ -2924,7 +2925,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			moveCamera(false);
-			if (SONG.notes[id].gfSection){
+			if (SONG.notes[id].gfSection && camFocus != 'bf'){
 				callOnLuas('onMoveCamera', ['gf']);
 			}else{
 				callOnLuas('onMoveCamera', ['boyfriend']);
@@ -2934,7 +2935,6 @@ class PlayState extends MusicBeatState
 
 	var cameraTwn:FlxTween;
 	public function moveCamera(isDad:Bool) {
-		
 		
 		
 		if(isDad) {
@@ -4310,6 +4310,7 @@ class PlayState extends MusicBeatState
 			default:
 				bfPos[0] = boyfriend.getMidpoint().x - 100 - boyfriend.cameraPosition[0];
 				bfPos[1] = boyfriend.getMidpoint().y - 100 + boyfriend.cameraPosition[1];
+			//bedrock engine my beloved
 		}
 	}
 }
