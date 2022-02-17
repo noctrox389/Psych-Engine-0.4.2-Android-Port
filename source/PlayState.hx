@@ -1145,13 +1145,16 @@ class PlayState extends MusicBeatState
 		RecalculateRating();
 
 		//PRECACHING MISS SOUNDS BECAUSE I THINK THEY CAN LAG PEOPLE AND FUCK THEM UP IDK HOW HAXE WORKS
-		CoolUtil.precacheSound('missnote1');
-		CoolUtil.precacheSound('missnote2');
-		CoolUtil.precacheSound('missnote3');
-
-		#if desktop
+		CoolUtil.precacheSound('missnote1'); 
+		CoolUtil.precacheSound('missnote2'); 
+		CoolUtil.precacheSound('missnote3'); 
+		if 
+		(ClientPrefs.playHitSounds) {
+			CoolUtil.precacheSound('Tick'); #if desktop 
+			FlxG.sound.play(Paths.sound('Tick'), 0); 
+		}
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		#end
 		
 		
@@ -2408,7 +2411,9 @@ class PlayState extends MusicBeatState
 							dad.holdTimer = 0;
 						}
 					}
-
+					if (camFocus == 'dad' && ClientPrefs.dynamicCam)
+						triggerCamMovement(Math.abs(note.noteData % 4));
+					
 					if (SONG.needsVoices)
 						vocals.volume = 1;
 
@@ -3198,7 +3203,9 @@ class PlayState extends MusicBeatState
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + 8); 
-
+		if (ClientPrefs.playHitSounds)
+			FlxG.sound.play(Paths.sound('Tick'));
+		
 		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
 
@@ -3688,11 +3695,15 @@ class PlayState extends MusicBeatState
 			note.wasGoodHit = true;
 			vocals.volume = 1;
 
-			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
-			var leData:Int = Math.round(Math.abs(note.noteData));
-			var leType:String = note.noteType;
-			callOnLuas('goodNoteHit', [notes.members.indexOf(note), leData, leType, isSus]);
+			var isSus:Bool = note.isSustainNote; //GET OUT OF MY 
+			HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD var 
+			leData:Int = Math.round(Math.abs(note.noteData)); var 
+			leType:String = note.noteType; 
+			if (camFocus == 'bf' && ClientPrefs.dynamicCam) 
+				triggerCamMovement(Math.abs(note.noteData % 4));
 
+			callOnLuas('goodNoteHit', 
+			[notes.members.indexOf(note), leData, leType, isSus]);
 			if (!note.isSustainNote)
 			{
 				note.kill();

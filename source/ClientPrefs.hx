@@ -31,6 +31,8 @@ class ClientPrefs {
 	public static var arrowOpacity:Float = 1;
 	public static var laneOpacity:Float = 1;
 	public static var healthBarAlpha:Float = 1;
+	public static var playNoteHit:Bool = false;
+	public static var dynamicCam:Bool = false;
 	public static var opponentLaneOpacity:Float = 1;
 	public static var healthCounter:Bool = true;
 	public static var opponentArrowOpacity:Float = 1;
@@ -81,6 +83,8 @@ class ClientPrefs {
 		FlxG.save.data.noteSize = noteSize;
 		FlxG.save.data.keTimeBar = keTimeBar;
 		FlxG.save.data.timeBarType = timeBarType;
+		FlxG.save.data.playNoteHit = playNoteHit;
+		FlxG.save.data.dynamicCam = dynamicCam;
 		FlxG.save.data.scoreType = scoreType;
 		FlxG.save.data.healthCounter = healthCounter;
 		FlxG.save.data.arrowOpacity = arrowOpacity;
@@ -163,6 +167,12 @@ class ClientPrefs {
 		if(FlxG.save.data.memoryCounter != null) {
                         memoryCounter = FlxG.save.data.memoryCounter;
                 }
+		if(FlxG.save.data.playNoteHit != null) {
+                        playNoteHit = FlxG.save.data.playNoteHit;
+                }
+		if(FlxG.save.data.dynamicCam != null) {
+                        dynamicCam = FlxG.save.data.dynamicCam;
+                }
 		if(FlxG.save.data.opponentArrowOpacity != null) {
                         opponentArrowOpacity = FlxG.save.data.opponentArrowOpacity;
                 }
@@ -181,7 +191,7 @@ class ClientPrefs {
 		if(FlxG.save.data.healthCounter != null) {
                         healthCounter = FlxG.save.data.healthCounter;
                 }
-		if(FlxG.save.data.camZooms != null) {
+		if(FlxG.save.data.keTimeBar != null) {
                         keTimeBar = FlxG.save.data.keTimeBar;
                 }
 		if(FlxG.save.data.hideHud != null) {
