@@ -1148,8 +1148,7 @@ class PlayState extends MusicBeatState
 		CoolUtil.precacheSound('missnote1'); 
 		CoolUtil.precacheSound('missnote2'); 
 		CoolUtil.precacheSound('missnote3'); 
-		if 
-		(ClientPrefs.playHitSounds) {
+		if (ClientPrefs.playHitSounds) {
 			CoolUtil.precacheSound('Tick'); #if desktop 
 			FlxG.sound.play(Paths.sound('Tick'), 0); 
 		}
