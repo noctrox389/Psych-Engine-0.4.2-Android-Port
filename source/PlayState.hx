@@ -4310,4 +4310,6 @@ class PlayState extends MusicBeatState
 			default:
 				bfPos[0] = boyfriend.getMidpoint().x - 100 - boyfriend.cameraPosition[0];
 				bfPos[1] = boyfriend.getMidpoint().y - 100 + boyfriend.cameraPosition[1];
+		}
+	}
 }
