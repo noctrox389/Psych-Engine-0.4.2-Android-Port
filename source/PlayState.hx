@@ -1149,9 +1149,10 @@ class PlayState extends MusicBeatState
 		CoolUtil.precacheSound('missnote2'); 
 		CoolUtil.precacheSound('missnote3'); 
 		if (ClientPrefs.playHitSounds) {
-			CoolUtil.precacheSound('Tick'); #if desktop 
+			CoolUtil.precacheSound('Tick'); 
 			FlxG.sound.play(Paths.sound('Tick'), 0); 
 		}
+		#if desktop
 		// Updating Discord Rich Presence.
 			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		#end
