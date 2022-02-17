@@ -1,4 +1,4 @@
-00package;
+package;
 
 #if desktop
 import Discord.DiscordClient;
