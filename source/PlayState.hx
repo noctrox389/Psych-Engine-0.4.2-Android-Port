@@ -2912,7 +2912,7 @@ class PlayState extends MusicBeatState
 	function moveCameraSection(?id:Int = 0):Void {
 		if(SONG.notes[id] == null) return;
 
-		if (!SONG.notes[id].mustHitSection && camFocus != 'dad')
+		if (!SONG.notes[id].mustHitSection)
 		{
 			moveCamera(true);
 			
@@ -2926,7 +2926,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			moveCamera(false);
-			if (SONG.notes[id].gfSection && camFocus != 'bf'){
+			if (SONG.notes[id].gfSection){
 				callOnLuas('onMoveCamera', ['gf']);
 			}else{
 				callOnLuas('onMoveCamera', ['boyfriend']);
