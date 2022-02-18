@@ -3697,10 +3697,9 @@ class PlayState extends MusicBeatState
 			note.wasGoodHit = true;
 			vocals.volume = 1;
 
-			var isSus:Bool = note.isSustainNote; //GET OUT OF MY 
-			HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD var 
-			leData:Int = Math.round(Math.abs(note.noteData)); var 
-			leType:String = note.noteType; 
+			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD 
+			var leData:Int = Math.round(Math.abs(note.noteData)); 
+			var leType:String = note.noteType; 
 //			if (camFocus == 'bf' && ClientPrefs.dynamicCam) 
 //				triggerCamMovement(Math.abs(note.noteData % 4));
 
