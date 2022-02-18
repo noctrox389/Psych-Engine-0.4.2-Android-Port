@@ -1145,13 +1145,16 @@ class PlayState extends MusicBeatState
 		RecalculateRating();
 
 		//PRECACHING MISS SOUNDS BECAUSE I THINK THEY CAN LAG PEOPLE AND FUCK THEM UP IDK HOW HAXE WORKS
-		CoolUtil.precacheSound('missnote1');
-		CoolUtil.precacheSound('missnote2');
-		CoolUtil.precacheSound('missnote3');
-
+		CoolUtil.precacheSound('missnote1'); 
+		CoolUtil.precacheSound('missnote2'); 
+		CoolUtil.precacheSound('missnote3'); 
+		if (ClientPrefs.playHitSounds) {
+			CoolUtil.precacheSound('Tick'); 
+			FlxG.sound.play(Paths.sound('Tick'), 0); 
+		}
 		#if desktop
 		// Updating Discord Rich Presence.
-		DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
+			DiscordClient.changePresence(detailsText, SONG.song + " (" + storyDifficultyText + ")", iconP2.getCharacter());
 		#end
 		
 		
@@ -2408,7 +2411,9 @@ class PlayState extends MusicBeatState
 							dad.holdTimer = 0;
 						}
 					}
-
+					//if (camFocus == 'dad' && ClientPrefs.dynamicCam)
+					//	triggerCamMovement(Math.abs(note.noteData % 4));
+					
 					if (SONG.needsVoices)
 						vocals.volume = 1;
 
@@ -2907,11 +2912,12 @@ class PlayState extends MusicBeatState
 	function moveCameraSection(?id:Int = 0):Void {
 		if(SONG.notes[id] == null) return;
 
-		if (!SONG.notes[id].mustHitSection)
+		if (!SONG.notes[id].mustHitSection && camFocus != 'dad')
 		{
 			moveCamera(true);
 			
 			if (SONG.notes[id].gfSection){
+				
 				callOnLuas('onMoveCamera', ['gf']);
 			}else{
 				callOnLuas('onMoveCamera', ['dad']);
@@ -2920,7 +2926,7 @@ class PlayState extends MusicBeatState
 		else
 		{
 			moveCamera(false);
-			if (SONG.notes[id].gfSection){
+			if (SONG.notes[id].gfSection && camFocus != 'bf'){
 				callOnLuas('onMoveCamera', ['gf']);
 			}else{
 				callOnLuas('onMoveCamera', ['boyfriend']);
@@ -2932,13 +2938,14 @@ class PlayState extends MusicBeatState
 	public function moveCamera(isDad:Bool) {
 		
 		
-		
 		if(isDad) {
+//			camFocus = 'dad'
 			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
 			camFollow.x += dad.cameraPosition[0];
 			camFollow.y += dad.cameraPosition[1];
 			tweenCamIn();
 		} else {
+//			camFocus = 'bf';
 			camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
 
 			switch (curStage)
@@ -3198,7 +3205,9 @@ class PlayState extends MusicBeatState
 	private function popUpScore(note:Note = null):Void
 	{
 		var noteDiff:Float = Math.abs(note.strumTime - Conductor.songPosition + 8); 
-
+		if (ClientPrefs.playHitSounds)
+			FlxG.sound.play(Paths.sound('Tick'));
+		
 		// boyfriend.playAnim('hey');
 		vocals.volume = 1;
 
@@ -3688,11 +3697,15 @@ class PlayState extends MusicBeatState
 			note.wasGoodHit = true;
 			vocals.volume = 1;
 
-			var isSus:Bool = note.isSustainNote; //GET OUT OF MY HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD
-			var leData:Int = Math.round(Math.abs(note.noteData));
-			var leType:String = note.noteType;
-			callOnLuas('goodNoteHit', [notes.members.indexOf(note), leData, leType, isSus]);
+			var isSus:Bool = note.isSustainNote; //GET OUT OF MY 
+			HEAD, GET OUT OF MY HEAD, GET OUT OF MY HEAD var 
+			leData:Int = Math.round(Math.abs(note.noteData)); var 
+			leType:String = note.noteType; 
+//			if (camFocus == 'bf' && ClientPrefs.dynamicCam) 
+//				triggerCamMovement(Math.abs(note.noteData % 4));
 
+			callOnLuas('goodNoteHit', 
+			[notes.members.indexOf(note), leData, leType, isSus]);
 			if (!note.isSustainNote)
 			{
 				note.kill();
@@ -4234,4 +4247,71 @@ class PlayState extends MusicBeatState
 
 	var curLight:Int = 0;
 	var curLightEvent:Int = 0;
+
+/*	var camFocus:String = "";
+	var daFunneOffsetMultiplier:Float = 20;
+	var dadPos:Array<Float> = [0, 0];
+	var bfPos:Array<Float> = [0, 0];
+	function triggerCamMovement(num:Float = 0)
+	{
+		if (camFocus == 'bf')
+		{
+			switch (num)
+			{
+				case 2:
+					camFollow.y = bfPos[1] - daFunneOffsetMultiplier;
+					camFollow.x = bfPos[0];
+				case 3:
+					camFollow.x = bfPos[0] + daFunneOffsetMultiplier;
+					camFollow.y = bfPos[1];
+				case 1:
+					camFollow.y = bfPos[1] + daFunneOffsetMultiplier;
+					camFollow.x = bfPos[0];
+				case 0:
+					camFollow.x = bfPos[0] - daFunneOffsetMultiplier;
+					camFollow.y = bfPos[1];
+			}
+		}
+		else
+		{
+			switch (num)
+			{
+				case 2:
+					camFollow.y = dadPos[1] - daFunneOffsetMultiplier;
+					camFollow.x = dadPos[0];
+				case 3:
+					camFollow.x = dadPos[0] + daFunneOffsetMultiplier;
+					camFollow.y = dadPos[1];
+				case 1:
+					camFollow.y = dadPos[1] + daFunneOffsetMultiplier;
+					camFollow.x = dadPos[0];
+				case 0:
+					camFollow.x = dadPos[0] - daFunneOffsetMultiplier;
+					camFollow.y = dadPos[1];
+			}
+		}
+	}
+
+	function getCamOffsets()
+	{
+		dadPos[0] = dad.getMidpoint().x + 150 + dad.cameraPosition[0];
+		dadPos[1] = dad.getMidpoint().y - 100 + dad.cameraPosition[1];
+
+		switch (curStage)
+		{
+			case 'limo':
+				bfPos[0] = boyfriend.getMidpoint().x - 110;
+				bfPos[1] = boyfriend.getMidpoint().y - 95;
+			case 'mall':
+				bfPos[0] = boyfriend.getMidpoint().x - 100;
+				bfPos[1] = boyfriend.getMidpoint().y - 165;
+			case 'school' | 'schoolEvil':
+				bfPos[0] = boyfriend.getMidpoint().x - 290;
+				bfPos[1] = boyfriend.getMidpoint().y - 300;
+			default:
+				bfPos[0] = boyfriend.getMidpoint().x - 100 - boyfriend.cameraPosition[0];
+				bfPos[1] = boyfriend.getMidpoint().y - 100 + boyfriend.cameraPosition[1];
+			//bedrock engine my beloved
+		} //not working in 0.4.2 sadly
+	} */
 }
