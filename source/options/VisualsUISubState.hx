@@ -58,7 +58,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		option.onChange = onChangeMemoryCounter;
 /*
 		var option:Option = new Option('Dynamic Cam',
-                        'If checked, enables dynamic cam movement/nit only works with vanilla FNF!.',
+                        'If checked, enables dynamic cam movement it only works with vanilla FNF!.',
                         'dynamicCam',
                         'bool',
                         false);
