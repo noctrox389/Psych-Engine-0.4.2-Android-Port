@@ -41,8 +41,7 @@ class VisualsUISubState extends BaseOptionsMenu
 			true);
 		addOption(option);
 
-		var option:Option = new Option('Score Type:',
-			"What should the Time Bar display?",
+		var option:Option = new Option('Score Type:',                                                                  "What should the Time Bar display?",
                         'scoreType',
                         'string',
                         'Psych Engine',
@@ -56,20 +55,6 @@ class VisualsUISubState extends BaseOptionsMenu
                         true);
                 addOption(option);
 		option.onChange = onChangeMemoryCounter;
-
-		var option:Option = new Option('Dynamic Cam',
-                        'If checked, enables dynamic cam movement/nit only works with vanilla FNF!.',
-                        'dynamicCam',
-                        'bool',
-                        false);
-                addOption(option);
-		
-		var option:Option = new Option('Play Hit Sounds',
-                        'If checked, enables hit sounds.',
-                        'playHitSounds',
-                        'bool',
-                        false);
-                addOption(option);
 
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
