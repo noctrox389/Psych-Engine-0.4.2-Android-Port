@@ -71,6 +71,13 @@ class VisualsUISubState extends BaseOptionsMenu
                         false);
                 addOption(option);
 
+		var option:Option = new Option('Icon Boping',
+                        'If checked, enables icon Boping.',
+                        'iconBoping',
+                        'bool',
+                        false);
+                addOption(option);
+
 		var option:Option = new Option('Hide HUD',
 			'If checked, hides most HUD elements.',
 			'hideHud',

@@ -19,6 +19,7 @@ class ClientPrefs {
 	public static var violence:Bool = true;
 	public static var camZooms:Bool = true;
 	public static var hideHud:Bool = false;
+	public static var iconBoping:Bool = false;
 	public static var noteOffset:Int = 0;
 	public static var speed:Float = 2;
 	public static var noteSize:Float = 0.7;
@@ -94,6 +95,7 @@ class ClientPrefs {
 		FlxG.save.data.camZooms = camZooms;
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
+		FlxG.save.data.iconBoping = iconBoping;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
@@ -181,6 +183,9 @@ class ClientPrefs {
                 }
 		if(FlxG.save.data.scoreType != null) {
                         scoreType = FlxG.save.data.scoreType;
+                }
+		if(FlxG.save.data.iconBoping != null) {
+                        iconBoping = FlxG.save.data.iconBoping;
                 }
 		if(FlxG.save.data.timeBarType != null) {
                         timeBarType = FlxG.save.data.timeBarType;
