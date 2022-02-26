@@ -86,10 +86,10 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Health Counter',
-                        'If unchecked, hides the health counter.',
+                        'If checked, enables the health counter.',
                         'healthCounter',
                         'bool',
-                        true);
+                        false);
                 addOption(option);
 		
 		var option:Option = new Option('Time Bar:',

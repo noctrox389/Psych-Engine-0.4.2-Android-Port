@@ -35,10 +35,12 @@ class ClientPrefs {
 	public static var playHitSounds:Bool = false;
 	public static var dynamicCam:Bool = false;
 	public static var opponentLaneOpacity:Float = 1;
-	public static var healthCounter:Bool = true;
+	public static var healthCounter:Bool = false;
 	public static var opponentArrowOpacity:Float = 1;
 	public static var memoryCounter:Bool = true;
 	public static var judgements:Bool = true;
+	public static var tabi:Bool = false;
+	public static var tabiMax:Int = 3;
 	public static var scoreType:String = 'Psych Engine';
 	public static var noAntimash:Bool = false;
 
@@ -96,6 +98,8 @@ class ClientPrefs {
 		FlxG.save.data.noteOffset = noteOffset;
 		FlxG.save.data.hideHud = hideHud;
 		FlxG.save.data.iconBoping = iconBoping;
+		FlxG.save.data.tabi = tabi;
+		FlxG.save.data.tabiMax = tabiMax;
 		FlxG.save.data.arrowHSV = arrowHSV;
 		FlxG.save.data.imagesPersist = imagesPersist;
 		FlxG.save.data.ghostTapping = ghostTapping;
@@ -186,6 +190,12 @@ class ClientPrefs {
                 }
 		if(FlxG.save.data.iconBoping != null) {
                         iconBoping = FlxG.save.data.iconBoping;
+                }
+		if(FlxG.save.data.tabi != null) {
+			tabi = FlxG.save.data.tabi;
+                }
+		if(FlxG.save.data.tabiMax != null) {
+			tabiMax = FlxG.save.data.tabiMax;
                 }
 		if(FlxG.save.data.timeBarType != null) {
                         timeBarType = FlxG.save.data.timeBarType;
