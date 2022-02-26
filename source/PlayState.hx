@@ -679,14 +679,42 @@ class PlayState extends MusicBeatState
 		luaDebugGroup.cameras = [camOther];
 		add(luaDebugGroup);
 
-        var doPush:Bool = false;
+		
 
+        var doPush:Bool = false;
+		// STAGE SCRIPTS
 		var doPush:Bool = false;
 		var luaFile:String = 'stages/' + curStage + '.lua';
 		luaFile = Paths.getPreloadPath(luaFile);
 		if(OpenFlAssets.exists(luaFile)) {
 			doPush = true;
 		}
+		// SONG SPECIFIC SCRIPTS
+                #if LUA_ALLOWED
+                var filesPushed:Array<String> = [];
+                var foldersToCheck:Array<String> = [Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
+
+                #if MODS_ALLOWED
+                foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song) + '/'));
+                if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
+                        foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/data/' + Paths.formatToSongPath(SONG.song) + '/'));
+                #end
+
+                for (folder in foldersToCheck)
+                {
+                        if(FileSystem.exists(folder))
+                        {
+                                for (file in FileSystem.readDirectory(folder))
+                                {
+                                        if(file.endsWith('.lua') && !filesPushed.contains(file))
+                                        {
+                                                luaArray.push(new FunkinLua(folder + file));
+                                                filesPushed.push(file);
+                                        }
+                                }
+                        }
+                }
+                #end
 
 		if(curStage == 'philly') {
 			phillyCityLightsEvent = new FlxTypedGroup<BGSprite>();
