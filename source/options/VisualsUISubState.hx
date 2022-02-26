@@ -42,7 +42,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		addOption(option);
 
 		var option:Option = new Option('Score Type:',
-			"What should the Time Bar display?",
+			"What should the score be like?",
                         'scoreType',
                         'string',
                         'Psych Engine',
@@ -62,8 +62,8 @@ class VisualsUISubState extends BaseOptionsMenu
                         'dynamicCam',
                         'bool',
                         false);
-                addOption(option);
-*/		
+                addOption(option); //not working
+*/
 		var option:Option = new Option('Play Hit Sounds',
                         'If checked, enables hit sounds.',
                         'playHitSounds',

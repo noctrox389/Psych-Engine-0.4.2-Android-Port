@@ -2171,7 +2171,7 @@ class PlayState extends MusicBeatState
                 if (health > 2)
                         health = 2;
                 } else {
-                var p2ToUse:Float = healthBar.x + (healthBar.width * (FlxMath.remapToRange((health / 2 * 100), 0, 100, 100, 0) * 0.01)) - (i>
+                var p2ToUse:Float = healthBar.x + (healthBar.width * (FlxMath.remapToRange((health / 2 * 100), 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
                 if (iconP2.x - iconP2.width / 2 < healthBar.x && iconP2.x > p2ToUse)
                 {
                         healthBarBG.offset.x = iconP2.x - p2ToUse;
