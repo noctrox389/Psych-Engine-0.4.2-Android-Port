@@ -49,7 +49,6 @@ import Achievements;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
-import HelperFunctions;
 
 #if sys
 import Sys;
