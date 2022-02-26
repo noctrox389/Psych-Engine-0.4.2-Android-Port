@@ -49,6 +49,7 @@ import Achievements;
 import StageData;
 import FunkinLua;
 import DialogueBoxPsych;
+import HelperFunctions;
 
 #if sys
 import Sys;
@@ -3320,6 +3321,7 @@ class PlayState extends MusicBeatState
 		if (currentTimingShown != null) {
                         remove(currentTimingShown);
                 }
+
                 var msTiming = HelperFunctions.truncateFloat(noteDiff, 3);
                 currentTimingShown = new FlxText(0, 0, 0, "0ms");
                         timeShown = 0;
