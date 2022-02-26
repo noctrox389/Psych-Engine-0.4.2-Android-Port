@@ -72,7 +72,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 		addOption(option);
 
 
-		var option:Option = new Option('Tabi'
+		var option:Option = new Option('Tabi',
 		'Certified tabi extra health classic.',
                         'tabi',
                         'bool',
