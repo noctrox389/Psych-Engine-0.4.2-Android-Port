@@ -2184,7 +2184,6 @@ class PlayState extends MusicBeatState
                 iconP2.x = p2ToUse;
                 if (health > ClientPrefs.tabiMax)
                         health = ClientPrefs.tabiMax;
-			scoreTxt.color = CoolUtil.smoothColorChange(scoreTxt.color, FlxColor.fromRGB(51, 255, 153), 0.3);
                 }	
 
 		if (healthBar.percent < 20) {
