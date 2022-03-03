@@ -45,15 +45,15 @@ class VisualsUISubState extends BaseOptionsMenu
 			"What should the score be like?",
                         'scoreType',
                         'string',
-                        'Psych Engine',
+                        'Kade Engine',
                         ['Psych Engine', 'Kade Engine', 'Disabled']);
                 addOption(option);
 
 		var option:Option = new Option('Memory Counter',
-			'If unchecked, disables memory counter.',
+			'If checked, enables memory counter.',
                         'memoryCounter',
                         'bool',
-                        true);
+                        false);
                 addOption(option);
 		option.onChange = onChangeMemoryCounter;
 /*
@@ -118,7 +118,7 @@ class VisualsUISubState extends BaseOptionsMenu
                         'If unchecked, hides judgements.',
                         'judgements',
                         'bool',
-                        true);
+                        false;
                 addOption(option);
 		
 		var option:Option = new Option('KE Timebar',
