@@ -37,11 +37,11 @@ class ClientPrefs {
 	public static var opponentLaneOpacity:Float = 1;
 	public static var healthCounter:Bool = false;
 	public static var opponentArrowOpacity:Float = 1;
-	public static var memoryCounter:Bool = true;
-	public static var judgements:Bool = true;
+	public static var memoryCounter:Bool = false;
+	public static var judgements:Bool = false;
 	public static var tabi:Bool = false;
 	public static var tabiMax:Int = 3;
-	public static var scoreType:String = 'Psych Engine';
+	public static var scoreType:String = 'Kade Engine';
 	public static var noAntimash:Bool = false;
 
 	//Every key has two binds, these binds are defined on defaultKeys! If you want your control to be changeable, you have to add it on ControlsSubState (inside OptionsState.hx)'s list
