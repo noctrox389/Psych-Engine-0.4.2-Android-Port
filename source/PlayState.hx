@@ -1117,8 +1117,6 @@ class PlayState extends MusicBeatState
                 }
                 #end
 		updateTime = true;
-
-		#if (MODS_ALLOWED && LUA_ALLOWED)
 		
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (isStoryMode && !seenCutscene)

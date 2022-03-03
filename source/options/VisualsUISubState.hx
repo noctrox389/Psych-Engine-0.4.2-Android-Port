@@ -117,8 +117,8 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Judgements',
                         'If unchecked, hides judgements.',
                         'judgements',
-                        'bool',
-                        false;
+                        'bool,
+                        false);
                 addOption(option);
 		
 		var option:Option = new Option('KE Timebar',
