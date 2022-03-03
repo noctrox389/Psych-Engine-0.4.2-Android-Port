@@ -682,19 +682,16 @@ class PlayState extends MusicBeatState
 		
 
         var doPush:Bool = false;
-		// STAGE SCRIPTS
-		var doPush:Bool = false;
-		var luaFile:String = 'stages/' + curStage + '.lua';
-		luaFile = Paths.getPreloadPath(luaFile);
-		if(OpenFlAssets.exists(luaFile)) {
-			doPush = true;
-		}
-		// SONG SPECIFIC SCRIPTS
+		// "GLOBAL" SCRIPTS
                 #if LUA_ALLOWED
                 var filesPushed:Array<String> = [];
-                var foldersToCheck:Array<String> = [Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
+                var foldersToCheck:Array<String> = [Main.getDataPath() + Paths.getPreloadPath('scripts/')];
 
-              
+                #if MODS_ALLOWED
+                foldersToCheck.insert(0, Paths.mods('scripts/'));
+                if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
+                        foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/scripts/'));
+                #end
 
                 for (folder in foldersToCheck)
                 {
@@ -711,6 +708,15 @@ class PlayState extends MusicBeatState
                         }
                 }
                 #end
+		
+// STAGE SCRIPTS
+		var doPush:Bool = false;
+		var luaFile:String = 'stages/' + curStage + '.lua';
+		luaFile = Paths.getPreloadPath(luaFile);
+		if(OpenFlAssets.exists(luaFile)) {
+			doPush = true;
+		}
+		
 
 		if(curStage == 'philly') {
 			phillyCityLightsEvent = new FlxTypedGroup<BGSprite>();
@@ -1084,19 +1090,35 @@ class PlayState extends MusicBeatState
 
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
+		// SONG SPECIFIC SCRIPTS
+                #if LUA_ALLOWED
+                var filesPushed:Array<String> = [];
+                var foldersToCheck:Array<String> = [Paths.getPreloadPath('data/' + Paths.formatToSongPath(SONG.song) + '/')];
+
+                #if MODS_ALLOWED
+                foldersToCheck.insert(0, Paths.mods('data/' + Paths.formatToSongPath(SONG.song) + '/'));
+                if(Paths.currentModDirectory != null && Paths.currentModDirectory.length > 0)
+                        foldersToCheck.insert(0, Paths.mods(Paths.currentModDirectory + '/data/' + Paths.formatToSongPath(SONG.song) + '/'));
+                #end
+
+                for (folder in foldersToCheck)
+                {
+                        if(FileSystem.exists(folder))
+                        {
+                                for (file in FileSystem.readDirectory(folder))
+                                {
+                                        if(file.endsWith('.lua') && !filesPushed.contains(file))
+                                        {
+                                                luaArray.push(new FunkinLua(folder + file));
+                                                filesPushed.push(file);
+                                        }
+                                }
+                        }
+                }
+                #end
 		updateTime = true;
 
 		#if (MODS_ALLOWED && LUA_ALLOWED)
-		var doPush:Bool = false;
-		var luaFile:String = 'data/' + Paths.formatToSongPath(SONG.song) + '/script.lua';
-	    luaFile = Paths.getPreloadPath(luaFile);
-		    if(OpenFlAssets.exists(luaFile)) {
-				doPush = true;
-			}
-		
-		if(doPush) 
-			luaArray.push(new FunkinLua(Asset2File.getPath(luaFile)));			
-		#end		
 		
 		var daSong:String = Paths.formatToSongPath(curSong);
 		if (isStoryMode && !seenCutscene)
