@@ -117,7 +117,7 @@ class VisualsUISubState extends BaseOptionsMenu
 		var option:Option = new Option('Judgements',
                         'If unchecked, hides judgements.',
                         'judgements',
-                        'bool,
+                        'bool',
                         false);
                 addOption(option);
 		
