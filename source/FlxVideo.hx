@@ -5,6 +5,8 @@ import flixel.FlxBasic;
 import flixel.FlxG;
 
 class FlxVideo extends FlxBasic {
+        public var finishCallback:Void->Void = null;
+
 	public function new(name:String) {
 		super();
 
