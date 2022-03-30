@@ -3259,7 +3259,7 @@ class PlayState extends MusicBeatState
 		eventNotes = [];
 	}
 	
-	var currentTimingShown:FlxText = null;
+	var msTxt:FlxText = null;
         var timeShown = 0;
 
 	private function popUpScore(note:Note = null):Void
@@ -3357,34 +3357,34 @@ class PlayState extends MusicBeatState
 		rating.velocity.y -= FlxG.random.int(140, 175);
 		rating.velocity.x -= FlxG.random.int(0, 10);
 
-		if (currentTimingShown != null) {
-                        remove(currentTimingShown);
+		if (msTxt != null) {
+                        remove(msTxt);
                 }
 
                 var msTiming = HelperFunctions.truncateFloat(noteDiff, 3);
-                currentTimingShown = new FlxText(0, 0, 0, "0ms");
+                msTxt = new FlxText(0, 0, 0, "0ms");
                         timeShown = 0;
                         switch (daRating)
                         {
                                 case 'shit' | 'bad':
-                                        currentTimingShown.color = FlxColor.RED;
+                                        msTxt.color = FlxColor.RED;
                                 case 'good':
-                                        currentTimingShown.color = FlxColor.GREEN;
+                                        msTxt.color = FlxColor.GREEN;
                                 case 'sick':
-                                        currentTimingShown.color = FlxColor.CYAN;
+                                        msTxt.color = FlxColor.CYAN;
                         }
 
-                currentTimingShown.borderStyle = OUTLINE;
-                currentTimingShown.borderSize = 1;
-                currentTimingShown.borderColor = FlxColor.BLACK;
-                currentTimingShown.text = msTiming + "ms";
-                currentTimingShown.size = 20;
-                currentTimingShown.cameras = [camHUD];
+                msTxt.borderStyle = OUTLINE;
+                msTxt.borderSize = 1;
+                msTxt.borderColor = FlxColor.BLACK;
+                msTxt.text = msTiming + "ms";
+                msTxt.size = 20;
+//                msTxt.cameras = [camHUD];
 
-                if (currentTimingShown.alpha != 1)  {
-                                currentTimingShown.alpha = 1;
+                if (msTxt.alpha != 1)  {
+                                msTxt.alpha = 1;
                 }
-                                add(currentTimingShown);
+                                add(msTxt);
 		rating.visible = !ClientPrefs.hideHud;
 
 		var comboSpr:FlxSprite = new FlxSprite().loadGraphic(Paths.image(pixelShitPart1 + 'combo' + pixelShitPart2));
@@ -3393,10 +3393,10 @@ class PlayState extends MusicBeatState
 		comboSpr.acceleration.y = 600;
 		comboSpr.velocity.y -= 150;
 		comboSpr.visible = !ClientPrefs.hideHud;
-		comboSpr.cameras = [camHUD];
+//		comboSpr.cameras = [camHUD];
 
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
-		currentTimingShown.velocity.x += comboSpr.velocity.x;
+		msTxt.velocity.x += comboSpr.velocity.x;
 		add(rating);
 
 		if (!PlayState.isPixelStage)
@@ -3412,7 +3412,7 @@ class PlayState extends MusicBeatState
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.7));
 		}
 
-		currentTimingShown.updateHitbox();
+		msTxt.updateHitbox();
 		comboSpr.updateHitbox();
 		rating.updateHitbox();
 
@@ -3473,8 +3473,8 @@ class PlayState extends MusicBeatState
 		FlxTween.tween(rating, {alpha: 0}, 0.2, {
 			startDelay: Conductor.crochet * 0.001,
 			onUpdate: function(tween:FlxTween) {
-                                        if (currentTimingShown != null)
-                                        currentTimingShown.alpha -= 0.02;
+                                        if (msTxt != null)
+                                        msTxt.alpha -= 0.02;
                                         timeShown++;
                         }
 		});
@@ -3484,10 +3484,10 @@ class PlayState extends MusicBeatState
 			{
 				coolText.destroy();
 				comboSpr.destroy();
-				if (currentTimingShown != null && timeShown >= 20)
+				if (msTxt != null && timeShown >= 20)
                                 {
-                                        remove(currentTimingShown);
-                                        currentTimingShown = null;
+                                        remove(msTxt);
+                                        msTxt = null;
                                 }
                                 rating.destroy();
 				rating.destroy();
